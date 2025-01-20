@@ -1,0 +1,1 @@
+{"name":"Local: test","url":"c:\\Users\\P\\Desktop\\python\\python_BAEKJOON\\tutorial_sp\\test.py","tests":[{"id":1737382723496,"input":"1 1\n2 3\n3 4\n9 8\n5 2","output":"2\n5\n7\n17\n7"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\P\\Desktop\\python\\python_BAEKJOON\\tutorial_sp\\test.py","group":"local","local":true}
