@@ -1,0 +1,1 @@
+{"name":"Local: 2675","url":"c:\\Users\\P\\Desktop\\python\\Baekjoon\\Baekjoon\\class_01\\2675.py","tests":[{"id":1737550145786,"input":"2\n3 ABC\n5 /HTP","output":"AAABBBCCC\n/////HHHHHTTTTTPPPPP"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\P\\Desktop\\python\\Baekjoon\\Baekjoon\\class_01\\2675.py","group":"local","local":true}
