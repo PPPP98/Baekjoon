@@ -1,0 +1,1 @@
+{"name":"Local: 4153","url":"c:\\Users\\P\\Desktop\\python\\Baekjoon\\Baekjoon\\class_02\\4153.py","tests":[{"id":1737555041070,"input":"6 8 10\n25 52 60\n5 12 13\n0 0 0","output":"right\nwrong\nright"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\P\\Desktop\\python\\Baekjoon\\Baekjoon\\class_02\\4153.py","group":"local","local":true}
