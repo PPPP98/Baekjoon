@@ -1,18 +1,10 @@
 import sys
 
-N = 28
-list_s = [0 for i in range(N)]
-mc = 1
+def ver_num(*args):
+    num = 0
+    for i in range(len(args[0])):
+        num = num + (args[0][i] ** 2)
+    return num % 10
 
-for i in range(N):
-    list_s[i] = int(sys.stdin.readline())
-
-list_s.sort()
-
-for i in range(N):
-    if mc != list_s[i]:
-        print(mc)
-        mc += 1
-    mc += 1
-
-#29 30 일때 출력안함
+Uni_num = list(map(int, sys.stdin.readline().split()))
+print(ver_num(Uni_num))
