@@ -15,11 +15,9 @@ def check_5(num):
             break
     return count
     
-
 N = int(sys.stdin.readline())
 
 count_5 = 0
-
 for i in range(1, N + 1):
     count_5 += check_5(i)
 

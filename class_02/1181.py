@@ -20,7 +20,7 @@ for i in range(len(list_len)):
 for i in range(M + 1): # 이중 리스트 내부 정렬
     list_idx[i].sort()
 
-for i in range(M + 1):
+for i in range(M + 1): # 출력 
     for j in range(len(list_idx[i])):
         print(list_idx[i][j])
 
