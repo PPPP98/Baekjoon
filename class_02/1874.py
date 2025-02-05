@@ -5,10 +5,8 @@ print = sys.stdout.write
 N = int(input())
 
 arr = []
-stack_arr = []
 push_pop = []
 flag = True
-
 
 stack_arr = [int(input()) for _ in range(N)]
 
