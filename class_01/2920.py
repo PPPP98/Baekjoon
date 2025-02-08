@@ -1,25 +1,10 @@
 import sys
 
-scale = list(map(int, sys.stdin.readline().split()))
+scale = sys.stdin.readline().rstrip()
 
-
-def determine_scale(sc):
-    if sc[0] == 1:
-        for i in range(8):
-            if sc[i] == i + 1:
-                pass
-            else:
-                return "mixed"
-        return "ascending"
-    elif sc[0] == 8:
-        for i in range(8):
-            if sc[i] == (8 - i):
-                pass
-            else:
-                return "mixed"
-        return "descending"
-
-    else:
-        return "mixed"
-
-print(determine_scale(scale))
+if scale == '1 2 3 4 5 6 7 8':
+    print('ascending')
+elif scale == '8 7 6 5 4 3 2 1':
+    print('descending')
+else:
+    print('mixed')
