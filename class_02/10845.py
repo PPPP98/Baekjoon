@@ -1,6 +1,6 @@
 import sys
 input = sys.stdin.readline
-
+# 원형큐로 해결
 class Que:
     def __init__(self, len_max):
         self.que_size = len_max
