@@ -16,4 +16,3 @@ for _ in range(N):
             print("0\n")
     else:
         heapq.heappush(heap, x)
-
