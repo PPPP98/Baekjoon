@@ -1,40 +1,38 @@
 import sys
 
-input = lambda:sys.stdin.readline().strip()
-# print = lambda x:sys.stdout.write(x)
+input = lambda: sys.stdin.readline().strip()
+print = lambda x: sys.stdout.write(x)
 
 
-def check(s, e):
-    if dp[s][e]:
-        return check[s - 1][e - 1]
-    else:
-        return 0
-
-N = int(input())
-arr = tuple(map(int, input().split()))
-
-dp = [[0] * N for _ in range(N)]
+def question(dp: list):
+    M = int(input())
+    ans = []
+    for _ in range(M):
+        s, e = map(int, input().split())
+        ans.append(dp[s - 1][e - 1])
+    print("\n".join(ans))
 
 
-for i in range(N - 1 , -1, -1):
-    for j in range(i, -1, -1):
-        if arr[j] != arr[i]:
-            continue
-        else:
-            
+def make_dp_table():
+    N = int(input())
+    arr = tuple(map(int, input().split()))
+
+    dp = [["0"] * N for _ in range(N)]
+
+    dp[N - 1][N - 1] = "1"
+    for i in range(N - 1):
+        if arr[i] == arr[i + 1]:
+            dp[i][i + 1] = "1"
+        dp[i][i] = "1"
+
+    for end in range(2, N):
+        for start in range(end - 1):
+            if arr[start] == arr[end] and dp[start + 1][end - 1] == "1":
+                dp[start][end] = "1"
+
+    return dp
 
 
-
-
-print(dp)
-
-
-
-# M = int(input())
-
-# for _ in range(M):
-#     s, e = map(int, input().split())
-#     if dp[s - 1][e - 1]:
-#         print(1)
-#     else:
-#         print(0)
+if __name__ == "__main__":
+    dp_table = make_dp_table()
+    question(dp_table)
