@@ -3,53 +3,35 @@ from collections import deque
 
 input = lambda: sys.stdin.readline().strip()
 
-move = (
-    (0, 1, 0),
-    (1, 0, 0),
-    (-1, 0, 0),
-    (0, -1, 0),
-    (1, 2, 1),
-    (2, 1, 1),
-    (2, -1, 1),
-    (1, -2, 1),
-    (-1, -2, 1),
-    (-2, -1, 1),
-    (-2, 1, 1),
-    (-1, 2, 1),
-)
+move = ((0, 1), (1, 0), (-1, 0), (0, -1))
+jump = ((1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1), (-2, 1), (-1, 2))
 INF = 200 * 200
 
 
 def bfs(skill: int, width: int, height: int, matrix: list) -> int:
-    distance = [[[INF] * width for _ in range(height)] for _ in range(skill + 1)]
-    for x in range(skill + 1):
-        distance[x][0][0] = 1
-
-    que = deque([(0, 0, 0)])
-
-    if (0, 0) == (width - 1, height - 1):
-        return 0
-
+    visited = [[-1] * width for _ in range(height)]
+    visited[0][0] = skill
+    # i, j, jump, move
+    que = deque([(0, 0, skill, 0)])
     while que:
-        i, j, k = que.popleft()
-        for di, dj, dk in move:
-            ni, nj, nk = i + di, j + dj, k + dk
-            if (
-                0 <= ni < height
-                and 0 <= nj < width
-                and nk <= skill
-                and distance[nk][ni][nj] == INF
-                and matrix[ni][nj] != 1
-            ):
-                if (ni, nj) == (height - 1, width - 1):
-                    return distance[k][i][j]
-                distance[nk][ni][nj] = distance[k][i][j] + 1
+        i, j, k, m = que.popleft()
+        if i == height - 1 and j == width - 1:
+            return m
 
-                for x in range(nk, skill + 1):
-                    if distance[x][ni][nj] > distance[nk][ni][nj]:
-                        distance[x][ni][nj] = distance[nk][ni][nj]
+        for di, dj in move:
+            ni, nj = i + di, j + dj
+            if 0 <= ni < height and 0 <= nj < width and matrix[ni][nj] != 1:
+                if visited[ni][nj] < k:
+                    visited[ni][nj] = k
+                    que.append((ni, nj, k, m + 1))
 
-                que.append((ni, nj, nk))
+        if k > 0:
+            for di, dj in jump:
+                ni, nj = i + di, j + dj
+                if 0 <= ni < height and 0 <= nj < width and matrix[ni][nj] != 1:
+                    if visited[ni][nj] < k - 1:
+                        visited[ni][nj] = k - 1
+                        que.append((ni, nj, k - 1, m + 1))
 
     return -1
 
