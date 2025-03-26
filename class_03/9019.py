@@ -21,18 +21,18 @@ def cal(num, cmd):
 
 def bfs():
     que = deque()
-    visited = [0] * 10000
+    visited = [False] * 10000
     visited[A] = True
     que.append((A, ""))
 
     while que:
         now, step = que.popleft()
-        if now == B:
-            return step
         for x in ("D", "S", "L", "R"):
             temp = cal(now, x)
+            if temp == B:
+                return step + x
             if not visited[temp]:
-                visited[temp] = 1
+                visited[temp] = True
                 next_step = step + x
                 que.append((temp, next_step))
     return
