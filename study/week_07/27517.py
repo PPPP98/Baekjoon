@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import sys
 
 input = lambda:sys.stdin.readline().strip()
@@ -21,3 +22,5 @@ for i in range(N - 1, -1, -1):
         j += 1
 
 print(res)
+=======
+>>>>>>> 42c7a81 (21)
