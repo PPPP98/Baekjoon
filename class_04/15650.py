@@ -1,3 +1,6 @@
+import sys
+input = lambda:sys.stdin.readline().strip()
+
 def back(idx):
     if idx > N and len(select) < M:
         return
@@ -11,5 +14,4 @@ def back(idx):
 
 N, M = map(int,input().split())
 select = []
-
 back(1)
