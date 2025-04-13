@@ -1,8 +1,3 @@
-import sys
-
-out = lambda x: sys.stdout.readline(x + "\n")
-
-
 def back(idx):
     if idx > N and len(select) < M:
         return
