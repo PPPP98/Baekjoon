@@ -1,37 +1,42 @@
-from collections import deque
-import sys
+def back(t=0):
+    global min_v
+    if M > len(select) + (len(chicken) - t):
+        return
 
-input = lambda: sys.stdin.readline().strip()
+    if len(select) == M:
+        min_v = min(min_v, score())
+        return
+
+    for i in range(t, len(chicken)):
+        select.append(chicken[i])
+        back(i + 1)
+        select.pop()
 
 
-def bfs():
-    if N == 1 and M == 1:
-        return 1
-    
-    visited = [[0] * M for _ in range(N)]
-    q = deque([(0, 0, 1, 2)])
-    visited[0][0] = 2
-
-    while q:
-        i, j, d, b = q.popleft()
-        for di, dj in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
-            ni, nj = i + di, j + dj
-            if 0 <= ni < N and 0 <= nj < M and (visited[ni][nj] < b):
-                if b == 1 and matrix[ni][nj] == 1:
-                    continue
-                elif b == 2 and matrix[ni][nj] == 1:
-                    nb = 1
-                else:
-                    nb = b
-                if ni == N - 1 and nj == M - 1:
-                    return d + 1
-                visited[ni][nj] = nb
-                q.append((ni, nj, d + 1, nb))
-
-    return -1
+def score():
+    board = [float("inf")] * len(house)
+    for r, c in select:
+        for i in range(len(house)):
+            x, y = house[i]
+            t = abs(r - x) + abs(c - y)
+            board[i] = min(board[i], t)
+    return sum(board)
 
 
 N, M = map(int, input().split())
-matrix = [list(map(int, input())) for _ in range(N)]
+city = [list(map(int, input().split())) for _ in range(N)]
 
-print(bfs())
+chicken = []
+house = []
+select = []
+
+for i in range(N):
+    for j in range(N):
+        if city[i][j] == 2:
+            chicken.append((i, j))
+        elif city[i][j] == 1:
+            house.append((i, j))
+
+min_v = float("inf")
+back()
+print(min_v)
