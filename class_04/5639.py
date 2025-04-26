@@ -12,13 +12,16 @@ class Node:
 
 
 class bintree:
-    def __init__(self, data):
-        self.root = Node(data)
+    def __init__(self):
+        self.root = None
 
-    def insert(self, arr: list):
-        for x in arr:
+    def insert(self, data):
+        if self.root == None:
+            self.root = Node(data)
+            return
+        else:
             node = self.root
-            self._insert(node, x)
+            self._insert(node, data)
 
     def _insert(self, node: Node, data: int):
         if data > node.data:
@@ -46,13 +49,11 @@ class bintree:
 
 
 if __name__ == "__main__":
-    data = []
+    tree = bintree()
     try:
         while True:
-            data.append(int(input()))
+            tree.insert(int(input()))
     except:
         pass
 
-    tree = bintree(data[0])
-    tree.insert(data[1:])
     tree.postorder()
